@@ -1,0 +1,17 @@
+services:
+  app:
+    build: .
+    container_name: ping-checker
+    volumes:
+      - ./data/users.json:/usr/src/app/users.json
+    environment:
+      - "PING_HOST=${PING_HOST}"
+      - "TELEGRAM_TOKEN=${TELEGRAM_TOKEN}"
+      - "USERS_FILE=users.json"
+      - "TIMEOUT_ON_SUCCESS=60"
+      - "TIMEOUT_ON_FAIL=20"
+      - "RETRY_ON_FAIL=3"
+      - "TELEGRAM_MESSAGE_HELLO=Вы подписались на уведомления."
+      - "TELEGRAM_MESSAGE_ONLINE=✅ Интернет доступен!"
+      - "TELEGRAM_MESSAGE_OFFLINE=❌ Интернет пропал."
+    restart: always
