@@ -28,7 +28,11 @@ class TelegramBot:
 
     def send_message(self, chat_id, text):
         print(f"[TelegramBot.send_message] Response: chat_id={chat_id}, text={text}")
-        self.bot.send_message(chat_id, text=text, parse_mode="Markdown", disable_web_page_preview=True)
+        try:
+            self.bot.send_message(chat_id, text=text, parse_mode="Markdown", disable_web_page_preview=True)
+        except Exception as e:
+            print("[TelegramBot.send_message] Error while send message: " + str(e))
+            traceback.print_exc()
 
     def start(self):
         print("[TelegramBot.start] Start...")
