@@ -1,4 +1,4 @@
-FROM python:3-alpine
+FROM python:3.14.9-alpine3.24
 
 EXPOSE 8080
 WORKDIR /usr/src/app
