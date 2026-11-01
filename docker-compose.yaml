@@ -1,9 +1,10 @@
-# Local run. The server setup lives in the ServerInfra repository.
+# Local run
 services:
   app:
     build: .
     container_name: ping-checker
     volumes:
       - ./data/users.json:/usr/src/app/users.json
-    env_file:
-      - .env
+    environment:
+      TELEGRAM_TOKEN: ${TELEGRAM_TOKEN}
+      PING_HOST: ${PING_HOST}
