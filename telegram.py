@@ -1,14 +1,15 @@
 import telebot
-import os
 import traceback
+
+import config
 
 
 class TelegramBot:
     def __init__(self, get_state_func, new_subscriber_listener):
-        self.TELEGRAM_TOKEN = os.environ.get('TELEGRAM_TOKEN')
-        self.TELEGRAM_MESSAGE_HELLO = os.environ.get('TELEGRAM_MESSAGE_HELLO')
-        self.TELEGRAM_MESSAGE_ONLINE = os.environ.get('TELEGRAM_MESSAGE_ONLINE')
-        self.TELEGRAM_MESSAGE_OFFLINE = os.environ.get('TELEGRAM_MESSAGE_OFFLINE')
+        self.TELEGRAM_TOKEN = config.TELEGRAM_TOKEN
+        self.TELEGRAM_MESSAGE_HELLO = config.TELEGRAM_MESSAGE_HELLO
+        self.TELEGRAM_MESSAGE_ONLINE = config.TELEGRAM_MESSAGE_ONLINE
+        self.TELEGRAM_MESSAGE_OFFLINE = config.TELEGRAM_MESSAGE_OFFLINE
         self.get_state_func = get_state_func
         self.new_subscriber_listener = new_subscriber_listener
 

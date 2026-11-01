@@ -1,9 +1,10 @@
 import random
 import subprocess
 import time
-import os
 import platform
 from enum import Enum, auto
+
+import config
 
 class HostState(Enum):
     ONLINE = auto()
@@ -11,13 +12,13 @@ class HostState(Enum):
 
 class HostMonitor:
     def __init__(self, state_listener):
-        self.host = os.environ.get('PING_HOST')
+        self.host = config.PING_HOST
         self.state_listener = state_listener
         self.state = HostState.ONLINE
 
-        self.timeout_on_success = int(os.environ.get('TIMEOUT_ON_SUCCESS'))
-        self.timeout_on_fail = int(os.environ.get('TIMEOUT_ON_FAIL'))
-        self.retry_on_fail = int(os.environ.get('RETRY_ON_FAIL'))
+        self.timeout_on_success = config.TIMEOUT_ON_SUCCESS
+        self.timeout_on_fail = config.TIMEOUT_ON_FAIL
+        self.retry_on_fail = config.RETRY_ON_FAIL
 
     def get_state(self):
         return self.state == HostState.ONLINE

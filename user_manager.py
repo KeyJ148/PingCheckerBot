@@ -1,10 +1,12 @@
 import json
 import os
 
+import config
+
 
 class UserManager:
     def __init__(self):
-        self.filepath = os.environ.get('USERS_FILE')
+        self.filepath = config.USERS_FILE
 
     def __save_users(self, users):
         with open(self.filepath, "w") as file:
